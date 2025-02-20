@@ -8,18 +8,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   showLists();
 
-  // Opret liste
+  //Eventlistener til at oprette en ny liste
   addListForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const title = listTitleInput.value.trim() || "Ny to do liste"; // Standard titel, hvis input er tomt
 
+    //laver unikt ID til listen
     const newList = {
       id: crypto.randomUUID(),
       title: title,
       tasks: [],
     };
 
-    lists.push(newList);
+    lists.push(newList); //tilføjer ny liste til arrayet
     updateLocalStorage();
     showLists();
     addListForm.reset(); // Rydder formularen
@@ -66,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateLocalStorage();
       });
 
-      // Sletter to do listen
+      //Sletter en to do liste
       const deleteListBtn = listElement.querySelector(".delete-list-btn");
       deleteListBtn.addEventListener("click", () => {
         lists = lists.filter((l) => l.id !== list.id); //Fjerner listen
@@ -78,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const completedTaskList = listElement.querySelector(
         ".completed-task-list"
       );
-
+      // Gennemgår alle opgaverne i listen og viser dem
       list.tasks.forEach((task, index) => {
         const li = document.createElement("li");
         li.innerHTML = `
@@ -95,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }" data-task-id="${index}">Slet</button>
                       `;
 
-        // Hvis opgaven er færdig, skal den vises under "Done"
+        //Placerer opgaven i den rigtige "kategori": "To do" eller "Done"
         if (task.done) {
           completedTaskList.appendChild(li);
         } else {
@@ -114,6 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const taskCheckbox = li.querySelector(".task-checkbox");
         taskCheckbox.addEventListener("change", (event) => {
           task.done = event.target.checked;
+          //flytter opgaven
           if (task.done) {
             // Hvis opgaven er markeret som færdig, skal den flyttes til den færdige liste (done)
             completedTaskList.appendChild(li);
@@ -126,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
 
+      //tilføjer eventlistener og finder den rigtige formular
       const addTaskForm = listElement.querySelector(".add-task-form");
       addTaskForm.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -143,10 +146,11 @@ document.addEventListener("DOMContentLoaded", () => {
         showLists();
       });
 
-      listsContainer.appendChild(listElement);
+      listsContainer.appendChild(listElement); //tilføjer listen
     });
   }
 
+  //henter lister fra localStorage
   function updateLocalStorage() {
     localStorage.setItem("toDoLists", JSON.stringify(lists));
   }
