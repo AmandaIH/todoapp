@@ -1,0 +1,127 @@
+body {
+  background-color: #cfb69f;
+  font-family: "Roboto Mono", serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  background-color: #cfb69f;
+  color: #402208;
+  padding: 20px;
+}
+
+h1 {
+  font-family: "Sigmar", serif;
+  font-size: 50px;
+  margin: 0;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+form input,
+form button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 13px;
+}
+
+button {
+  background-color: #402208;
+  color: white;
+  border: none;
+  padding: 2%;
+  cursor: pointer;
+  font-family: "Roboto Mono", serif;
+}
+
+button:hover {
+  scale: 1.25;
+}
+
+.lists-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.list {
+  background-color: #a68776;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 10px 10px 15px #402208;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-title {
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.delete-list-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #402208;
+}
+
+.delete-task-btn {
+  background-color: #402208;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.delete-list-btn:hover {
+  color: #6f4f1f;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr;
+  margin: 5px 0;
+}
+
+.task-checkbox {
+  width: 18px;
+  height: 18px;
+}
+
+.add-task-form {
+  display: flex;
+  margin-top: 10%;
+  gap: 10px;
+}
